@@ -2,6 +2,8 @@ const  router  =  require ( "express" ).Router( );
 
 const PetModel = require("../models/Pet.model.js")
 
+
+
 // GET =>  "/pet/create" renderizar hacia el formulario de crear un animal
 
 router.get("/create", (req, res, next)=>{
@@ -38,7 +40,26 @@ router.post("/create", (req, res, next)=>{
 
 //GET => "/pet/search" Buscar los animales que tiene el usuario
 
+router.get("/",(req, res, next)=>{
+
+    PetModel.find()
+    .then((listPet)=>{
+
+        res.render("pet/petList",{
+            listPet 
+        })
+
+    })
+    .catch((err)=>{
+        next(err)
+    })
+
+
+})
+
 //POST => "/pet/search" Buscar los animales que tiene el usuario
+
+
 
 //GET => "/pet/:id" Seleccionar por id para consultar los datos del paciente
 

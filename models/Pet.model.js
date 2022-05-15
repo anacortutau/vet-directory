@@ -6,13 +6,13 @@ const petSchema = new Schema({
 
     name: {
         type: String,
-        required: true
+        
     },
 
     owner: {
 
         type: String,
-        required: true
+       
     },
 
     category: {
@@ -28,26 +28,26 @@ const petSchema = new Schema({
 
     weigth: {
         type: Number,
-        required: true
+       
     },
 
     triage: {
         type: String,
-        required: true
+       
 
 
     },
 
     diagnostic: {
         type: String,
-        required: true
+        
     },
 
 
     treatement: {
 
         type: String,
-        required: true
+        
 
     },
 

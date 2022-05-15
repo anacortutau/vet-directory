@@ -65,7 +65,7 @@ router.post("/signup", async (req, res, next)=>{
 
         })
 
-        res.redirect("/user/user-login.hbs")
+        res.redirect("/user/login")
 
     }catch(err){
         next (err)
@@ -80,6 +80,8 @@ router.get("/login", (req, res, next)=>{
 
 //POST "auth/login"=> recibir las credenciales del usuario y validarlo.
 router.post("/login", async (req, res, next)=>{
+
+    console.log(req.body)
 
     const {email, password} = req.body
 
