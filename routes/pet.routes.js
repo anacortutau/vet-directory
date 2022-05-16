@@ -41,7 +41,7 @@ router.post("/create", (req, res, next)=>{
         user: _id
     })
     .then ((listPet)=>{
-        res.redirect("/pet")
+        res.redirect("/pet/search")
         
     })
 
@@ -53,23 +53,25 @@ router.post("/create", (req, res, next)=>{
 })
 
 router.get("/search", (req, res, next)=>{
-
-        // console.log(req.query)
-
-        // const{search} = req.query
-        // const {id} = req.params
-
-        // PetModel.find((listPet)=>{
-        //     return search.find("name") === eachPet.find("name")
-        // })
-
-        // res.render("pet/pet-search.hbs", {
-        //     listPet
-        // })
    
-    // const {id} = req.params
 
-    // PetModel.findById(id).populate("user")
+    PetModel.find().select("name").populate("user")
+
+    .then((listPet)=>{
+        res.render("pet/pet-search.hbs",{
+            listPet
+        })
+    })
+
+    .catch((err)=>{
+        next(err)
+    })
+})
+
+router.post("/search", (req, res, next)=>{
+   
+
+    // PetModel.find().select("name").populate("user")
 
     // .then((listPet)=>{
     //     res.render("pet/pet-search.hbs",{
@@ -81,7 +83,6 @@ router.get("/search", (req, res, next)=>{
     //     next(err)
     // })
 })
-
 
 
 router.get("/",(req, res, next)=>{
