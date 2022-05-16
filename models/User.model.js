@@ -6,6 +6,7 @@ const userSchema = new Schema({
 
 name: {
     type: String,
+    required: true
 
 
 },
@@ -16,7 +17,8 @@ address: {
 },
 
 city: {
-    type: String
+    type: String,
+    required: true
 },
 
 phone: {

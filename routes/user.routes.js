@@ -6,12 +6,12 @@ const UserModel = require("../models/User.model.js")
 
 const bcryptjs= require("bcryptjs")
 
-// GET "auth/signup" => renderizar el formulario de signup
+// GET "user/signup" => renderizar el formulario de signup
 router.get("/signup", (req, res, next)=>{
     res.render("user/user-signup.hbs")
 })
 
-//POST "auth/signup" => rebicir los datos del formulario y registrarlo
+//POST "user/signup" => rebicir los datos del formulario y registrarlo
 
 router.post("/signup", async (req, res, next)=>{
 
@@ -42,10 +42,10 @@ router.post("/signup", async (req, res, next)=>{
 
     try{
 
-        const loginUser = await UserModel.findOne({email: email})
+        const loginUser = await UserModel.findOne({email})
         console.log(loginUser)
 
-        if(loginUser !== null){
+        if(loginUser){
             res.render("user/user-signup", {
                 errorMessage: "the user already exist"
             })
@@ -60,6 +60,12 @@ router.post("/signup", async (req, res, next)=>{
         console.log(hashPassword)
 
         const newUser = await UserModel.create({
+            name,
+            address,
+            city,
+            phone,
+            days,
+            hours,
             email,
             password: hashPassword
 
@@ -78,7 +84,7 @@ router.get("/login", (req, res, next)=>{
     res.render("user/user-login.hbs")
 })
 
-//POST "auth/login"=> recibir las credenciales del usuario y validarlo.
+//POST "user/login"=> recibir las credenciales del usuario y validarlo.
 router.post("/login", async (req, res, next)=>{
 
     console.log(req.body)
@@ -110,10 +116,13 @@ router.post("/login", async (req, res, next)=>{
             return; 
     
         }
+
+        // para el sistema de autenticacion, crea la sesion activa del usuario
+        //me dice quien es el usuario logueado, siempre tengo acceso en todas las rutas.
          req.session.user = loginUser;
         // console.log(loginUser); 
 
-        //  req.app.locals.userIsActive = true;
+         //req.app.locals.userIsActive = true;
         // console.log()
 
         res.redirect("/dentro")
@@ -123,6 +132,22 @@ router.post("/login", async (req, res, next)=>{
     }
 
 })
+
+router.get("/", (req, res, next)=>{
+
+    const {id} = req.params
+
+    UserModel.find(id).select("name")
+    .then((user)=>{
+        res.render("pet/new-pet.hbs", {
+            user
+        })
+    })
+    .catch((err)=>{
+        next(err)
+    })
+})
+
 
 
 module.exports = router;

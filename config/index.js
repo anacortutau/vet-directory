@@ -44,7 +44,7 @@ module.exports = (app) => {
 
   app.use(session({
     secret: process.env.SESSION_SECRET,
-    revase: false,
+    resave: false,
     saveUninitialized: false, //solo se guardan sesiones de usuarios que hayan sido validados
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/vet-directory"

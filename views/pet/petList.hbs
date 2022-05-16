@@ -3,9 +3,18 @@
 {{#each listPet}}
 
   <li>
-     <a href="/pet/{{this.name}}">Name: {{this.name}}</a>
-     <a href="/pet/{{this.owner}}">Name: {{this.owner}}</a>
+     <a href="/pet/{{this._id}}">Name: {{this.name}}</a>
+     <br>
+     <a href="/pet/{{this._id}}">Owner Name: {{this.owner}}</a>
     
     </li>
 
 {{/each}}
+
+
+
+
+
+{{!-- {{#each pet.user}}
+<p> <strong>{{this.name}},{{this.owner}}</strong></p>
+{{/each}} --}}

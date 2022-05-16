@@ -1,0 +1,24 @@
+
+
+
+
+<div>
+    {{#with pet}}
+    <p>Name: {{this.name}}</p>
+    <p>Owner: {{this.owner}}</p>
+     <p>Category: {{this.category}}</p>
+      <p>Age: {{this.age}}</p>
+       <p>Weigth: {{this.weigth}}</p>
+        <p>Triage: {{this.triage}}</p>
+         <p>Diagnostic: {{this.diagnostic}}</p>
+          <p>Treatement: {{this.treatement}}</p>
+    {{/with}}
+
+<a href="/pet/{{pet._id}}/edit">
+<button>Update</button>
+</a>
+
+<form action="/pet/{{pet._id}}/delete" method="POST">
+<button>Delete</button>
+</form>
+</div>
