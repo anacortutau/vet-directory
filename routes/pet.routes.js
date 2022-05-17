@@ -77,19 +77,32 @@ router.post("/search", (req, res, next)=>{
         return; 
     }
 
+ 
+        PetModel.find({name})
+     
+       .then((listPet)=>{
+        //     const{_id} = req.session.user
+        //  filterList = () =>{
+        //     listPet.forEach((eachPet)=>{
 
-    PetModel.find({name})
+        //         if(eachPet == req.session.user){
     
-    .then((listPet)=>{
-        console.log(listPet)
-        res.render("pet/pet-list-filter",{
-            listPet
-        })
+        //             res.render("pet/pet-list-filter",{
+        //                 filterList
+        //             })
+        //         }
+    
+        //        })
+
+        //  }
+               
+        
     })
 
     .catch((err)=>{
         next(err)
     })
+    
 })
 
 router.get("/list-filter", (req, res, next)=>{
