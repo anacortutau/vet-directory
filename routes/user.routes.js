@@ -133,6 +133,15 @@ router.post("/login", async (req, res, next)=>{
 
 })
 
+router.get("/logout", (req, res, next) =>{
+    req.session.destroy()
+
+    //req.app.locals.userIsActive = false;
+
+        res.redirect("/")
+    
+})
+
 
 
 

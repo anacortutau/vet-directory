@@ -81,20 +81,20 @@ router.post("/search", (req, res, next)=>{
         PetModel.find({name})
      
        .then((listPet)=>{
-        //     const{_id} = req.session.user
-        //  filterList = () =>{
-        //     listPet.forEach((eachPet)=>{
-
-        //         if(eachPet == req.session.user){
+        console.log(listPet)
+        
+            listPet.forEach((eachPet)=>{
+             
+                if(eachPet.user == _id){
+                   console.log("funciona") 
+                    // res.render("pet/pet-list-filter",{
+                        
+                    // })
+                }
     
-        //             res.render("pet/pet-list-filter",{
-        //                 filterList
-        //             })
-        //         }
-    
-        //        })
+               })
 
-        //  }
+       
                
         
     })
