@@ -122,7 +122,7 @@ router.post("/login", async (req, res, next)=>{
         req.session.user = loginUser;
         console.log(loginUser); 
 
-         //req.app.locals.userIsActive = true;
+         req.app.locals.userIsActive = true;
         // console.log()
 
         res.redirect("/dentro")
@@ -133,10 +133,10 @@ router.post("/login", async (req, res, next)=>{
 
 })
 
-router.get("/logout", (req, res, next) =>{
+router.post("/logout", (req, res, next) =>{
     req.session.destroy()
 
-    //req.app.locals.userIsActive = false;
+    req.app.locals.userIsActive = false;
 
         res.redirect("/")
     

@@ -69,6 +69,7 @@ router.post("/search", (req, res, next)=>{
     console.log("probando esta ruta post del search")
     const{name} = req.body
     const{_id} = req.session.user
+    let filterList 
     if(name === "") {
         res.render("pet/pet-search", {
             errorMessage: "please, enter a name to search"
@@ -82,19 +83,15 @@ router.post("/search", (req, res, next)=>{
      
        .then((listPet)=>{
         console.log(listPet)
-        
-            listPet.forEach((eachPet)=>{
-             
-                if(eachPet.user == _id){
-                   console.log("funciona") 
-                    // res.render("pet/pet-list-filter",{
-                        
-                    // })
+        filterList = listPet.filter((eachPet)=> {
+            if(eachPet.user == _id){
+                   console.log(filterList) 
+                    res.redirect("/pet/list-filter",{
+                        filterList
+                    })
                 }
-    
-               })
+        })
 
-       
                
         
     })
