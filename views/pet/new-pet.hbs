@@ -6,7 +6,15 @@
 <input type="text" name="name">
 
 <label for="category">Category:</label>
-<input type="text" name="category">
+<select name="category" multiple="true"> 
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="exotic">Exotic</option>
+    <option value="farm">Farm</option>
+
+</select>
+
+
 
 <label for="owner">Owner:</label>
 <input type="text" name="owner">
@@ -25,11 +33,7 @@
 
 <label for="treatement">Treatement:</label>
 <input type="text" name="treatement">
-
-
-
-
-
+<h5>{{errorMessage}}</h5>
 <button>Create</button>
-
 </form>
+<a href="/dentro"><button>Menu</button></a>

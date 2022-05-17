@@ -1,0 +1,16 @@
+<h1>Lista de mascotas</h1>
+
+{{#each listPet}}
+
+  <li>
+     <a href="/pet/{{this._id}}">Name: {{this.name}}</a>
+     <br>
+     <a href="/pet/{{this._id}}">Owner Name: {{this.owner}}</a>
+    
+    </li>
+
+{{/each}}
+
+<a href="/dentro"><button>Menu</button></a>
+
+

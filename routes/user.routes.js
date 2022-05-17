@@ -119,8 +119,8 @@ router.post("/login", async (req, res, next)=>{
 
         // para el sistema de autenticacion, crea la sesion activa del usuario
         //me dice quien es el usuario logueado, siempre tengo acceso en todas las rutas.
-         req.session.user = loginUser;
-        // console.log(loginUser); 
+        req.session.user = loginUser;
+        console.log(loginUser); 
 
          //req.app.locals.userIsActive = true;
         // console.log()
@@ -133,20 +133,7 @@ router.post("/login", async (req, res, next)=>{
 
 })
 
-router.get("/", (req, res, next)=>{
 
-    const {id} = req.params
-
-    UserModel.find(id).select("name")
-    .then((user)=>{
-        res.render("pet/new-pet.hbs", {
-            user
-        })
-    })
-    .catch((err)=>{
-        next(err)
-    })
-})
 
 
 

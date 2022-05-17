@@ -1,15 +1,10 @@
 
-<form action="/pet/search">
+<form action="/pet/search" method="POST">
     <label for="search">Search</label>
-    <input type="text" name="search">
+    <input type="text" name="name">
+     <h5>{{errorMessage}}</h5>
     <button>Search</button>
 </form>
 
 
 
-{{!-- {{#if listPet}}
-{{listPet.name}}
-{{listPet.owner}}
-{{listPet.user}}
-{{else}}
-{{/if}} --}}

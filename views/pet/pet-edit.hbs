@@ -2,28 +2,29 @@
 <form action="/pet/{{pet._id}}/edit" method="POST">
 
 <label for="name">Name:</label>
-<input type="text" name="name">
+<input type="text" name="name" value="{{pet.name}}">
 
 <label for="category">Category:</label>
-<input type="text" name="category">
+<input type="text" name="category" value="{{pet.category}}">
 
 <label for="owner">Owner:</label>
-<input type="text" name="owner">
+<input type="text" name="owner" value="{{pet.owner}}">
 
 <label for="age">Age:</label>
-<input type="text" name="age">
+<input type="text" name="age" >
 
 <label for="weigth">Weigth:</label>
-<input type="text" name="weigth">
+<input type="text" name="weigth" >
 
 <label for="triage">Triage:</label>
-<input type="text" name="triage">
+<input type="text" name="triage" >
 
 <label for="diagnostic">Diagnostic:</label>
-<input type="text" name="diagnostic">
+<input type="text" name="diagnostic" >
 
 <label for="treatement">Treatement:</label>
-<input type="text" name="treatement">
+<input type="text" name="treatement" >
 
 <a href="/pet/edit"><button>Edit</button></a>
 <a href="/pet/edit"><button>Delete</button></a>
+<a href="/dentro"><button>Menu</button></a>

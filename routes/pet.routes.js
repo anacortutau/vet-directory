@@ -5,30 +5,40 @@ const PetModel = require("../models/Pet.model.js")
 const UserModel = require("../models/User.model.js")
 
 
-
-
-
-
 // GET =>  "/pet/create" renderizar hacia el formulario de crear un animal
 
 router.get("/create", (req, res, next)=>{
     console.log("probando esta ruta get")
-        res.render("pet/new-pet.hbs")
-    
-   
+    res.render("pet/new-pet.hbs")
 })
 
 //POST: => "/pet/create" volcar la info del  formulario para crear un animal
 
 router.post("/create", (req, res, next)=>{
 
-    console.log("probando esta ruta post")
-    
+    console.log("probando esta create post")
     const { name, category, owner, age, weigth, triage, diagnostic, treatement} = req.body
+    if(name === "" || owner === "" || age === "" || weigth === "" || triage === ""  || diagnostic === "" || treatement === "") {
+        res.render("pet/new-pet", {
+            errorMessage: "please, fill all the required fiels"
+        })
+        return; 
+    }
+
+    if(!req.body.category === "dog" || !req.body.category === "cat" || !req.body.category === "exotic" || !req.body.category === "farm"){
+        res.render("pet/new-pet", {
+            errorMessage: "please, choose a category"
+        })
+
+        return;
+    }
+
+
 
     //El servidor ya sabe quien esta haciendo esta solicitud, siempre que este logueado.
     //Cual es esta variable, que dice quien es el usuario.
     const{_id} = req.session.user 
+
     PetModel.create({
         name,
         category,
@@ -40,25 +50,39 @@ router.post("/create", (req, res, next)=>{
         treatement,
         user: _id
     })
-    .then ((listPet)=>{
-        res.redirect("/pet/search")
-        
+    .then (()=>{
+      res.redirect("/pet/list")
     })
 
     .catch((err)=>{
         next(err)
-
     })
 
 })
 
 router.get("/search", (req, res, next)=>{
-   
+    console.log("probando esta ruta get del search")
+    res.render("pet/pet-search")
+})
 
-    PetModel.find().select("name").populate("user")
+router.post("/search", (req, res, next)=>{
+    console.log("probando esta ruta post del search")
+    const{name} = req.body
+    const{_id} = req.session.user
+    if(name === "") {
+        res.render("pet/pet-search", {
+            errorMessage: "please, enter a name to search"
+        })
+        console.log(errorMessage);
+        return; 
+    }
 
+
+    PetModel.find({name})
+    
     .then((listPet)=>{
-        res.render("pet/pet-search.hbs",{
+        console.log(listPet)
+        res.render("pet/pet-list-filter",{
             listPet
         })
     })
@@ -68,29 +92,18 @@ router.get("/search", (req, res, next)=>{
     })
 })
 
-router.post("/search", (req, res, next)=>{
-   
-
-    // PetModel.find().select("name").populate("user")
-
-    // .then((listPet)=>{
-    //     res.render("pet/pet-search.hbs",{
-    //         listPet
-    //     })
-    // })
-
-    // .catch((err)=>{
-    //     next(err)
-    // })
+router.get("/list-filter", (req, res, next)=>{
+    console.log("probando esta ruta get")
+    res.render("pet/pet-list-filter.hbs")
 })
 
 
-router.get("/",(req, res, next)=>{
-
-    PetModel.find()
+router.get("/list",(req, res, next)=>{
+    console.log("probando esta ruta get del list")
+    const{_id} = req.session.user 
+    PetModel.find({user:_id})
     .then((listPet)=>{
-
-        res.render("pet/petList",{
+        res.render("pet/pet-list",{
             listPet 
         })
 
@@ -98,8 +111,6 @@ router.get("/",(req, res, next)=>{
     .catch((err)=>{
         next(err)
     })
-
-
 })
 
 //GET => "/pet/:id" Seleccionar por id para consultar los datos del paciente
@@ -134,6 +145,7 @@ router.get("/:id/edit", async (req, res, next)=>{
         next(err)
     }
 })
+
 // POST => "/pet/:id/edit" actualizar la informacion a partir del formulario en la bbdd
 router.post("/:id/edit", (req, res, next)=>{
 
