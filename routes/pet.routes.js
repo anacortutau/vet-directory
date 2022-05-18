@@ -150,6 +150,14 @@ router.post("/:id/edit", (req, res, next)=>{
     const{age, weigth, triage, diagnostic, treatement} = req.body
     const{id} = req.params
 
+    if(age === "" || weigth === "" || triage === "" || diagnostic === "" || treatement === "") {
+
+        res.render("pet/pet-edit", {
+            errorMessage: "please, fill all the required fiels"
+        })
+        return; 
+    }
+
     PetModel.findByIdAndUpdate(id, {
         age,
         weigth,
@@ -159,7 +167,7 @@ router.post("/:id/edit", (req, res, next)=>{
     })
     .then((pet)=>{
 
-        res.redirect(`/pet/${pet._id}/edit`)
+        res.redirect(`/dentro`)
     })
     .catch((err)=>{
         next(err)

@@ -4,8 +4,10 @@ const isLoggedIn = require("../middlewares/isLoggedIn.js")
 
 router.get("/", isLoggedIn, (req, res, next)=>{
 
-
-    res.render("dentro/dentro.hbs")
+    const{name} = req.session.user
+    res.render("dentro/dentro.hbs",{
+        name
+    })
 })
 
 
