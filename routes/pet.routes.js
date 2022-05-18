@@ -159,7 +159,7 @@ router.post("/:id/edit", (req, res, next)=>{
     })
     .then((pet)=>{
 
-        res.redirect("/dentro")
+        res.redirect(`/pet/${pet._id}/edit`)
     })
     .catch((err)=>{
         next(err)
