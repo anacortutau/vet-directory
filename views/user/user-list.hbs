@@ -1,0 +1,25 @@
+<h1>Lista de Veterinarios</h1>
+
+{{#each listUser}}
+
+  <li>
+     <a href="/user/{{this._id}}">Name: {{this.name}}</a>
+     <br>
+     <a href="/user/{{this._id}}"> Address: {{this.address}}</a>
+      <a href="/user/{{this._id}}">City: {{this.city}}</a>
+     <br>
+     <a href="/user/{{this._id}}">Phone: {{this.phone}}</a>
+      <a href="/user/{{this._id}}">Days: {{this.days}}</a>
+     <br>
+     <a href="/user/{{this._id}}"> Schedule: {{this.hours}}</a>
+      <a href="/user/{{this._id}}">Email: {{this.email}}</a>
+     
+    </li>
+
+{{/each}}
+
+<a href="/"><button>Index</button></a>
+
+
+
+

@@ -133,7 +133,55 @@ router.post("/login", async (req, res, next)=>{
 
 })
 
-router.post("/logout", (req, res, next) =>{
+router.get("/search", (req, res, next)=>{
+    console.log("probando esta ruta get del search")
+    res.render("user/user-list")
+})
+
+
+
+router.post("/search", (req, res, next)=>{
+    console.log("probando esta ruta post del search")
+    const{city} = req.body
+    if(city === "") {
+        res.render("index", {
+            errorMessage: "please, enter a city to search"
+        })
+        console.log(errorMessage);
+        return; 
+    }
+        UserModel.find({city: city})
+       .then((listUser)=>{
+        console.log(listUser)
+        res.render("user/user-list",{
+          listUser 
+        })
+    })
+  
+    .catch((err)=>{
+        next(err)
+    })
+    
+  })
+
+  router.get("/:id", (req, res,next)=>{
+    console.log("probando la ruta")
+    const {id} = req.params
+
+    UserModel.findById(id)
+    .then((user)=>{
+        res.render("user/user-details",{
+            user
+        })
+    })
+    .catch((err)=>{
+        next(err)
+    })
+})
+
+
+
+  router.post("/logout", (req, res, next) =>{
     req.session.destroy()
 
     req.app.locals.userIsActive = false;
