@@ -1,12 +1,88 @@
+
+
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/Vet-Diary-portada.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
-a {
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+header nav .btn {
+  
+    display: flex;
+    align-items:center;
+    margin-top: 40px;
+    border-radius: 30px;
+    background-color: white;
+    color: #1b84ad;
+    padding: 10px 40px; 
+ 
+
+}
+
+.search {
+    display: flex;
+    align-items:center;
+    margin-top: 40px;
+    border-radius: 30px;
+    color: #1b84ad;
+    
+
+
+}
+
+main {
+
+  margin-top: 150px;
+  text-align: center;
+
+}
+
+
+
+
+
+
+
+/* header {
+
+  width: 100%;
+  height: 60px;
+
+}
+
+header nav {
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+header nav .nav-rigth-section {
+  width: 250px;
+  height: auto;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .nav-rigth-section a {
+  margin-right: 10px;
+  color: #0000;
+
+} */
+
+
+/* a {
   color: #00b7ff;
 }
 
 h1 {
   color: 15px;
-}
+} */

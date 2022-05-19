@@ -1,12 +1,38 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+{{!-- <h1>{{appTitle}} 🚀</h1>
+<p>Welcome Ironhacker!</p> --}}
+    
+    <header>
+        <nav>
+        <a class="btn" href="/user/signup">Signup</a>
+        <a class="btn" href="/user/login">Login</a>
+        </nav>
+    </header>
 
-    <form action="/user/search" method="POST">
-    <label for="search">Search</label>
+    <main>
+
+    <section class="main-input">
+     <form action="/user/search" method="POST">
+     <div class="main-input-container">
+    <label for="search"></label>
     <input type="text" name="city">
+    </div>
      <h5>{{errorMessage}}</h5>
-    <button>Search</button>
-    </form>
+    <section class="main-buttons">
+        <button>Search</button>
+         </form>
+         </div>
+    </section>
 
-    <a href="/user/signup"><button>Signup</button></a>
-    <a href="/user/login"><button>Login</button></a>
+    </main>
+
+    
+        
+     
+ 
+
+
+{{!-- <a  href="/user/signup"><button>Signup</button>
+  <a href="/user/login"><button>Login</button> --}}
+    
+
+   

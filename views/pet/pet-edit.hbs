@@ -1,35 +1,50 @@
+<div class="container">
+
 
 <form action="/pet/{{pet._id}}/edit" method="POST">
-
+<strong>
+</p>
+  <p>
 <label for="name">Name:</label>
 <input type="text" name="name" value="{{pet.name}}">
-
+</p>
+  <p>
 <label for="category">Category:</label>
 <input type="text" name="category" value="{{pet.category}}">
-
+</p>
+  <p>
 <label for="owner">Owner:</label>
 <input type="text" name="owner" value="{{pet.owner}}">
-
+</p>
+  <p>
 <label for="age">Age:</label>
 <input type="text" name="age" value="{{pet.age}}" >
-
+</p>
+  <p>
 <label for="weigth">Weigth:</label>
 <input type="text" name="weigth" value="{{pet.weigth}}">
-
+</p>
+  <p>
 <label for="triage">Triage:</label>
 <input type="text" name="triage" value="{{pet.triage}}" >
-
+</p>
+  <p>
 <label for="diagnostic">Diagnostic:</label>
 <input type="text" name="diagnostic" value="{{pet.diagnostic}}" >
-
+</p>
+  <p>
 <label for="treatement">Treatement:</label>
 <input type="text" name="treatement" value="{{pet.treatement}}">
 <h5>{{errorMessage}}</h5>
-    <form action="/dentro">
-        <button>Edit</button>
-        <button>Delete</button>
-    </form>
-
+</p>
+</div>
+  <p>
+<button>Edit</button></a>
+</p>
+  <p>
+<button>Delete</button></a>
+</strong>
 </form>
-
+</p>
+  <p>
 <a href="/dentro"><button>Menu</button></a>

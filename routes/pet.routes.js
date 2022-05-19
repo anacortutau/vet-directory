@@ -4,10 +4,13 @@ const PetModel = require("../models/Pet.model.js")
 
 const UserModel = require("../models/User.model.js")
 
+const isLoggedIn = require("../middlewares/isLoggedIn.js")
+
+
 
 // GET =>  "/pet/create" renderizar hacia el formulario de crear un animal
 
-router.get("/create", (req, res, next)=>{
+router.get("/create",isLoggedIn, (req, res, next)=>{
     console.log("probando esta ruta get")
     res.render("pet/new-pet.hbs")
 })
@@ -59,12 +62,12 @@ router.post("/create", (req, res, next)=>{
     })
 
 })
-
-router.get("/search", (req, res, next)=>{
+//GET => "/pet/search" Buscar los animales que tiene el usuario
+router.get("/search",isLoggedIn, (req, res, next)=>{
     console.log("probando esta ruta get del search")
     res.render("pet/pet-search")
 })
-
+//POST => "/pet/search" Buscar los animales que tiene el usuario
 router.post("/search", (req, res, next)=>{
     console.log("probando esta ruta post del search")
     const{name} = req.body
@@ -90,13 +93,8 @@ router.post("/search", (req, res, next)=>{
     
 })
 
-router.get("/list-filter", (req, res, next)=>{
-    console.log("probando esta ruta get")
-    res.render("pet/pet-list-filter.hbs")
-})
 
-
-router.get("/list",(req, res, next)=>{
+router.get("/list",isLoggedIn,(req, res, next)=>{
     console.log("probando esta ruta get del list")
     const{_id} = req.session.user 
     PetModel.find({user:_id})
@@ -113,7 +111,7 @@ router.get("/list",(req, res, next)=>{
 
 //GET => "/pet/:id" Seleccionar por id para consultar los datos del paciente
 
-router.get("/:id", (req, res,next)=>{
+router.get("/:id",isLoggedIn, (req, res,next)=>{
     console.log("probando la ruta")
     const {id} = req.params
 
@@ -129,7 +127,7 @@ router.get("/:id", (req, res,next)=>{
 })
 
 // GET=>  "/pet/:id/edit" para renderizar el formulario para editar información del paciente
-router.get("/:id/edit", async (req, res, next)=>{
+router.get("/:id/edit", isLoggedIn,async (req, res, next)=>{
     const {id} = req.params;
 
     try{
@@ -150,13 +148,6 @@ router.post("/:id/edit", (req, res, next)=>{
     const{age, weigth, triage, diagnostic, treatement} = req.body
     const{id} = req.params
 
-    if(age === "" || weigth === "" || triage === "" || diagnostic === "" || treatement === "") {
-
-        res.render("pet/pet-edit", {
-            errorMessage: "please, fill all the required fiels"
-        })
-        return; 
-    }
 
     PetModel.findByIdAndUpdate(id, {
         age,
@@ -175,7 +166,7 @@ router.post("/:id/edit", (req, res, next)=>{
 })
 // POST => "/pet/:id/delete" borrar pacientes
 
-router.post("/:id/delete", async (req, res, next)=>{
+router.post("/:id/delete",async (req, res, next)=>{
 
     const{id} = req.params
 
@@ -189,11 +180,11 @@ router.post("/:id/delete", async (req, res, next)=>{
     }
 })
 
-//GET => "/pet/search" Buscar los animales que tiene el usuario
 
 
 
-//POST => "/pet/search" Buscar los animales que tiene el usuario
+
+
 
 
 

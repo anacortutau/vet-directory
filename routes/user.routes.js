@@ -1,10 +1,12 @@
 const router = require("express").Router();
 
-//const {redirect} = require("express/lib/response")
 
 const UserModel = require("../models/User.model.js")
 
-const bcryptjs= require("bcryptjs")
+const bcryptjs= require("bcryptjs");
+const req = require("express/lib/request");
+
+
 
 // GET "user/signup" => renderizar el formulario de signup
 router.get("/signup", (req, res, next)=>{
@@ -164,6 +166,10 @@ router.post("/search", (req, res, next)=>{
     
   })
 
+
+
+
+
   router.get("/:id", (req, res,next)=>{
     console.log("probando la ruta")
     const {id} = req.params
@@ -173,6 +179,55 @@ router.post("/search", (req, res, next)=>{
         res.render("user/user-details",{
             user
         })
+    })
+    .catch((err)=>{
+        next(err)
+    })
+})
+
+
+
+// GET=>  "/user/:id/edit" para renderizar el formulario para editar información del usuario
+router.get("/:id/edit", async (req, res, next)=>{
+    const{_id} = req.session.user
+    
+    
+    try{
+        const user = await UserModel.findById(_id)
+        res.render("user/user-edit.hbs", {
+            user
+        })
+    }catch(err){
+        next(err)
+    }
+})
+
+// POST => "/user/:id/edit" actualizar la informacion a partir del formulario en la bbdd
+router.post("/:id/edit", (req, res, next)=>{
+
+    const{address, city, phone, days, hours, email} = req.body
+    const{_id} = req.session.user
+
+    if(address === "" || city === "" || phone === "" || days === "" || hours === ""|| email === "") {
+
+        res.render("user/user-edit", {
+            errorMessage: "please, fill all the required fiels"
+        })
+        return; 
+    }
+
+    UserModel.findByIdAndUpdate(_id,{
+        address,
+        city,
+        phone,
+        days,
+        hours,
+        email,
+       
+
+    })
+    .then((user)=>{
+        res.redirect("/dentro")
     })
     .catch((err)=>{
         next(err)
