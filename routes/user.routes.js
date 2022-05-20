@@ -34,7 +34,7 @@ router.post("/signup", async (req, res, next)=>{
 
     if(passwordRegex.test(password) === false){
         res.render("user/user-signup.hbs", {
-            errorMessage:"contraseña no válida, necesita ocho caracteres, una letra y un numero"
+            errorMessage:"invalid password, you need eight characters, a letter and a number"
         })
         return;
 
@@ -95,7 +95,7 @@ router.post("/login", async (req, res, next)=>{
 
     if(!email || !password ){
         res.render("user/user-login", {
-            errorMessage: "debes rellenar todos los campos"
+            errorMessage: "please, fill all the required fiels"
         })
         return; 
     }
@@ -105,7 +105,7 @@ router.post("/login", async (req, res, next)=>{
 
         if(!loginUser){
             res.render("user/user-login", {
-                errorMessage: "Lo siento el usuario no esta registrado"
+                errorMessage: "sorry, you are not registered"
             })
             return; 
         }
@@ -113,7 +113,7 @@ router.post("/login", async (req, res, next)=>{
         const passwordCheck = await bcryptjs.compare(password, loginUser.password)
         if(!passwordCheck){
             res.render("user/user-login", {
-                errorMessage: "contraseña invalida"
+                errorMessage: "wrong password"
             })
             return; 
     
