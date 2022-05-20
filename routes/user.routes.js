@@ -235,6 +235,20 @@ router.post("/:id/edit", (req, res, next)=>{
 })
 
 
+router.post("/:id/delete",async (req, res, next)=>{
+
+    const{_id} = req.session.user
+
+    try{
+
+        await UserModel.findByIdAndRemove(_id)
+
+        res.redirect("/")
+    }catch(err){
+        next(err)
+    }
+})
+
 
   router.post("/logout", (req, res, next) =>{
     req.session.destroy()
