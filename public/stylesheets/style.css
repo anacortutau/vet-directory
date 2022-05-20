@@ -32,6 +32,7 @@ header nav .btn {
     margin-top: 40px;
     border-radius: 30px;
     color: #1b84ad;
+    padding: 10px 40px;
     
 
 
@@ -44,11 +45,104 @@ main {
 
 }
 
+body.cuerpo1{
+  background-image: url(../images/signup.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position:fixed; 
+   
+  }
 
+  body.cuerpo2{
+    background-image: url(../images/login.png);
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      background-position:fixed; 
+     
+    }
+  
 
+  body.cuerpo3{
+    background-image: url(../images/dentro.png);
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      background-position:fixed; 
+     
+    }
+  
+    body.cuerpo4{
+      background-image: url(../images/newpet.png);
+        background-size: 100% 100%;
+        background-attachment: fixed;
+        background-position:fixed; 
+       
+      }
 
+      body.cuerpo5{
+        background-image: url(../images/petlist.png);
+          background-size: 100% 100%;
+          background-attachment: fixed;
+          background-position:fixed; 
+         
+        }
 
+        body.cuerpo6{
+          background-image: url(../images/petedit.png);
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            background-position:fixed; 
+           
+          }
+    
 
+          body.cuerpo12{
+            background-image: url(../images/searchpet.png);
+              background-size: 100% 100%;
+              background-attachment: fixed;
+              background-position:fixed; 
+             
+            }
+
+            body.cuerpo7{
+              background-image: url(../images/petedit.png);
+                background-size: 100% 100%;
+                background-attachment: fixed;
+                background-position:fixed; 
+               
+              }
+
+              
+            body.cuerpo8{
+              background-image: url(../images/profile.png);
+                background-size: 100% 100%;
+                background-attachment: fixed;
+                background-position:fixed; 
+               
+              }
+      
+              body.cuerpo9{
+                background-image: url(../images/searchvet.png);
+                  background-size: 100% 100%;
+                  background-attachment: fixed;
+                  background-position:fixed; 
+                 
+                }
+                body.cuerpo10{
+                  background-image: url(../images/vetdetail.png);
+                    background-size: 100% 100%;
+                    background-attachment: fixed;
+                    background-position:fixed; 
+                   
+                  }
+
+                  body.cuerpo11{
+                    background-image: url(../images/patientdetails.png);
+                      background-size: 100% 100%;
+                      background-attachment: fixed;
+                      background-position:fixed; 
+                     
+                    }
+          
 
 /* header {
 

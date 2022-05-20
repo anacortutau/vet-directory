@@ -1,18 +1,32 @@
+<header>
+  <strong>
+        <nav class="navbar navbar-dark bg-primary">
+<h1 class="text-light">LOGIN</h1>
+ </nav>
+ </strong>
+    </header>
+</p>
+  <p></p>
+  <p>
+<body class="cuerpo2">
 
-<h1>Login</h1>
-
+<div class="d-flex justify-content-center">
 <form action="/user/login" method="POST">
-
+<strong>
 <label for="email">Email:</label>
 <input type="text"name="email">
-
+</p>
+  <p>
 <label for="password">Password:</label>
 <input type="password"name="password">
 
 <h5>{{errorMessage}}</h5>
+<button class="btn btn-primary">Login</button>
+</p>
+  <p>
 
-<button>Login</button>
-
+</strong>
 </form>
+</body>
+<a href="/user/signup"><button class="btn btn-primary">Signup</button></a>
 
-<a href="/user/signup"><button>Signup</button></a>

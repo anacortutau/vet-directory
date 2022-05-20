@@ -1,20 +1,40 @@
-
-
-<h1>Welcome {{this.name}}</h1>
-
-<a href="/pet/create"><button>New Patient</button></a>
-
-<a href="/pet/list"><button>Patients</button></a>
-
-<a href="/pet/search"><button>Search</button></a>
-
-<a href="/user/{{this._id}}/edit">
-<button>Profile</button>
+<header>
+  <strong>
+        <nav class="navbar navbar-dark bg-primary">
+<h1 class="text-light">Welcome {{this.name}} </h1>
+ </nav>
+ </strong>
+    </header>
+</p>
+  <p></p>
+  <p>
+<body class="cuerpo3">
+  <div class="d-flex justify-content-center">
+<div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<a href="/pet/create"> <button class="btn btn-primary">New Patient</button></a><br>
+<p></p>
+<a href="/pet/list"> <button class="btn btn-primary">Patients</button></a>
+<div></div>
+<p></p>
+<a href="/pet/search"> <button class="btn btn-primary">Search</button></a> </p>
+<p></p>
+  <p>  <a href="/user/{{this._id}}/edit">
+ <button class="btn btn-primary">Profile</button>
 </a>
 
 {{!-- <a href="/user/edit"><button>Profile</button></a> --}}
 
 <form action="/user/logout" method="POST">
-<button>Logout</button>
+ <button class="btn btn-primary">Logout</button>
+<div>
 </form>
-
+<div></div>
+</body>

@@ -1,8 +1,19 @@
-
-
-
-<a href="/dentro"><button>Menu</button></a>
+<header>
+  <strong>
+        <nav class="navbar navbar-dark bg-primary">
+<h1 class="text-light">Patient Details</h1>
+ </nav>
+ </strong>
+    </header>
+</p>
+  <p></p>
+  <p>
+<body class="cuerpo11">
+  <div class="d-flex justify-content-center">
 <div>
+<a href="/dentro"><button class="btn btn-primary">Menu</button></a>
+<div>
+    <strong>
     {{#with pet}}
     <p>Name: {{this.name}}</p>
     <p>Owner: {{this.owner}}</p>
@@ -13,12 +24,14 @@
          <p>Diagnostic: {{this.diagnostic}}</p>
           <p>Treatement: {{this.treatement}}</p>
     {{/with}}
-
+</strong>
 <a href="/pet/{{pet._id}}/edit">
-<button>Update</button>
+ <button class="btn btn-primary">Update</button>
 </a>
-
+  <p></p>
 <form action="/pet/{{pet._id}}/delete" method="POST">
-<button>Delete</button>
+ <button class="btn btn-primary">Delete</button>
 </form>
 </div>
+<div>
+</body>
