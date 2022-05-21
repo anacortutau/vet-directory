@@ -222,18 +222,3 @@ Double functionality web application, to be able to search for veterinarians nea
 
 
 
-
-## States y States Transitions
-
-
-
-## Task
-
-
-
-## Links
-
-### Git
-
-
-### Slides
